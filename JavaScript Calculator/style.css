@@ -1,0 +1,15 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-weight:normal;
+}
+
+
+/* linear-gradient  faz a cor começar de um lado ao outro, primeira cor é como fica na esquerda e a segunda como fica na direita*/
+
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, blue, black);
+}
+
