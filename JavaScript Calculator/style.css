@@ -1,9 +1,8 @@
 *, *::before, *::after {
     box-sizing: border-box;
     font-family: sans-serif;
-    font-weight:normal;
+    font-weight:bold;
 }
-
 
 /* linear-gradient  faz a cor começar de um lado ao outro, primeira cor é como fica na esquerda e a segunda como fica na direita*/
 
@@ -13,3 +12,53 @@ body {
     background: linear-gradient(to right, blue, black);
 }
 
+.calculator-grid {
+    display:block;
+    text-align:center;
+    padding:0px;
+    margin:auto;
+    margin-top:100px;
+    width:190px;
+    height:280px;
+    background-color:rgb(212, 224, 238);
+}
+
+/* outline:none = faz com que ao clicar no botão, depois de sair para outro, o anterior não fique marcado*/
+.calculator-grid button {
+    width:40px;
+    border:none;
+    height:40px;
+    margin:2px;
+    background-color:rgb(160, 168, 241);
+    outline:none;
+}
+
+.calculator-grid button:hover {
+    background-color:white;
+}
+
+/*flex-direction: column = faz os items flex, serem mostrados como colunas, ou seja um em cima do outro*/
+
+.output {
+    background-color:rgb(136, 182, 219);
+    height:60px;
+    display:flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding:5px;
+}
+
+#span-one {
+    width:88px;
+}
+
+.output .previous-operand {
+color:rgb(51, 31, 230);
+font-size:5px;
+}
+
+.output .current-operand {
+    color:rgb(15, 3, 121);
+    font-size:15px;
+}
