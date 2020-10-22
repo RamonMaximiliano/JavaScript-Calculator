@@ -17,16 +17,21 @@ class Calculator {
 
     delete() {
 
-
     }
 
     appendNumber(number) {
-
-
+        if (number === '.' && this.currentOperand.includes('.')) return
+        this.currentOperand = this.currentOperand.toString() + number.toString()
     }
 
     chooseOperation(operation) {
-
+        if (this.currentOperand === '') return
+        if (this.previousOperand !== '') {
+            this.compute()
+        }
+        this.operation = operation
+        this.previousOperand = this.currentOperand
+        this.currentOperand = ''
     }
 
     compute() {
@@ -34,15 +39,10 @@ class Calculator {
     }
 
     updateDisplay() {
-
-
-
+        this.currentOperandTextElement.innerText = this.currentOperand
+        this.previousOperandTextElement.innerText = this.previousOperand
     }
 }
-
-
-
-
 
 /*declarando as váriaveis e selecionando os elementos*/
 const numberButtons = document.querySelectorAll('[data-number]');
@@ -53,4 +53,18 @@ const allClearButton = document.querySelector('[data-all-clear]');
 const previousOperandTextElement = document.querySelector('[data-previous-operand]');
 const currentOperandTextElement = document.querySelector('[data-current-operand]');
 
+const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
 
+numberButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.appendNumber(button.innerText)
+        calculator.updateDisplay()
+    })
+})
+
+operationButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.chooseOperation(button.innerText)
+        calculator.updateDisplay()
+    })
+})
